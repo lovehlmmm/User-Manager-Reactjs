@@ -1,0 +1,69 @@
+import React, { Component } from 'react';
+
+class AddUser extends Component {
+    constructor(props) {
+        super(props);
+        this.state = ({
+            statusEdit: false
+        })
+
+    }
+    showBtnClose = () => {
+        if (this.state.statusEdit === true) {
+            return (
+                <div>
+                    <div onClick={this.changeClose}  className="btn btn-block btn-outline-secondary">Close</div>
+                    <div className="card text-left mt-2">
+                        <div className="card border-primary mb-3" style={{ maxWidth: '18rem' }}>
+                            <div className="card-header">Create</div>
+                            <div className="card-body text-primary">
+                                <h5 className="card-title">User Name</h5>
+                                <div className="form-group">
+                                    <input type="text" className="form-control form-control-sm" placeholder="Name" />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" className="form-control form-control-sm" placeholder="Phone" />
+                                </div>
+                                <div className="form-group">
+                                    <select className="custom-select"  >
+                                        <option value>--Choose Role-</option>
+                                        <option value={1}>Admin</option>
+                                        <option value={2}>Modrator</option>
+                                        <option value={3}>Normal</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <div className="btn btn-primary btn-block">  Create  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            )
+
+        } else {
+            return (
+                <div className="btn btn-block btn-outline-info" onClick={this.changeEdit}>Create User</div>
+            )
+        }
+    }
+    changeEdit = () => {
+        this.setState({ statusEdit: true })
+    }
+    changeClose = () => {
+        this.setState({ statusEdit: false })
+    }
+    render() {
+        return (
+            <div className="col-3">
+
+                {this.showBtnClose()}
+
+
+            </div>
+
+        );
+    }
+}
+
+export default AddUser;
